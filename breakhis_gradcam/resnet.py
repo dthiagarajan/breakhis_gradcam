@@ -32,14 +32,10 @@ def conv1x1(in_planes, out_planes, stride=1):
 
 # Cell
 class BasicBlock(nn.Module):
-    """The basic building block for ResNets, encompassing the residual connection.
-
-    Args:
-        * `inplanes`: number of input filters
-        * `planes`: number of output filters
-        * `stride`: stride of the first 3x3 conv
-        * `downsample`: whether to downsample the input of the block
-    """
+    """The basic building block for ResNets, encompassing the residual connection. Takes in
+       `inplanes` number of input filters, outputs `planes` number of output filters, with
+       stride `stride` on the first 3x3 conv, and an optional downsampling (`nn.Module`)
+       on the residual output via the `downsample` parameter."""
     expansion = 1
 
     def __init__(self, inplanes, planes, stride=1, downsample=None):
@@ -72,14 +68,10 @@ class BasicBlock(nn.Module):
 
 
 class Bottleneck(nn.Module):
-    """The bottleneck block for ResNets, encompassing the residual connection.
-
-    Args:
-        `inplanes`: number of input filters
-        `planes`: number of output filters
-        `stride`: stride of the first 3x3 conv
-        `downsample`: whether to downsample the input of the block
-    """
+    """The bottleneck building block for ResNets, encompassing the residual connection. Takes in
+       `inplanes` number of input filters, outputs `planes` number of output filters, with
+       stride `stride` on the first 3x3 conv, and an optional downsampling (`nn.Module`)
+       on the residual output via the `downsample` parameter."""
     expansion = 4
 
     def __init__(self, inplanes, planes, stride=1, downsample=None):
