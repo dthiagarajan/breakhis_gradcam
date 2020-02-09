@@ -35,10 +35,10 @@ class BasicBlock(nn.Module):
     """The basic building block for ResNets, encompassing the residual connection.
 
     Args:
-        - `inplanes`: number of input filters
-        - `planes`: number of output filters
-        - `stride`: stride of the first 3x3 conv
-        - `downsample`: whether to downsample the input of the block
+        * `inplanes`: number of input filters
+        * `planes`: number of output filters
+        * `stride`: stride of the first 3x3 conv
+        * `downsample`: whether to downsample the input of the block
     """
     expansion = 1
 
