@@ -87,11 +87,12 @@ summary: "Functions to set up a ImageNet pre-trained ResNet backbone to fine-tun
 <h2 id="BasicBlock" class="doc_header"><code>class</code> <code>BasicBlock</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L34" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BasicBlock</code>(<strong><code>inplanes</code></strong>, <strong><code>planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>, <strong><code>downsample</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>The basic building block for ResNets, encompassing the residual connection.</p>
-<p>Args:
-    <code>inplanes</code>: number of input filters
-    <code>planes</code>: number of output filters
-    <code>stride</code>: stride of the first 3x3 conv
-    <code>downsample</code>: whether to downsample the input of the block</p>
+<p>Args:</p>
+
+<pre><code>- `inplanes`: number of input filters
+- `planes`: number of output filters
+- `stride`: stride of the first 3x3 conv
+- `downsample`: whether to downsample the input of the block</code></pre>
 
 </div>
 
@@ -143,7 +144,7 @@ summary: "Functions to set up a ImageNet pre-trained ResNet backbone to fine-tun
 </blockquote>
 <p>Constructs a ResNet using a block specification and number of layers.</p>
 <p>Args:
-    <code>block</code>: the building block for the ResNet (i.e. <code>BasicBlock</code> or <code>Bottleneck</code>)
+    <code>block</code>: the building block for the ResNet (i.e. <a href="/breakhis_gradcam/resnet#BasicBlock"><code>BasicBlock</code></a> or <a href="/breakhis_gradcam/resnet#Bottleneck"><code>Bottleneck</code></a>)
     <code>layers</code>: a list of 4 integers, specifying the number of layers in each block
     <code>num_classes</code>: the number of output classes (defaults to 1000)</p>
 

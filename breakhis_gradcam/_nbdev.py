@@ -2,9 +2,19 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"model_urls": "00_resnet.ipynb",
+         "conv3x3": "00_resnet.ipynb",
+         "conv1x1": "00_resnet.ipynb",
+         "BasicBlock": "00_resnet.ipynb",
+         "Bottleneck": "00_resnet.ipynb",
+         "ResNet": "00_resnet.ipynb",
+         "resnet18": "00_resnet.ipynb",
+         "resnet34": "00_resnet.ipynb",
+         "resnet50": "00_resnet.ipynb",
+         "resnet101": "00_resnet.ipynb",
+         "resnet152": "00_resnet.ipynb"}
 
-modules = []
+modules = ["resnet.py"]
 
 doc_url = "https://dthiagarajan.github.io/breakhis_gradcam/"
 
