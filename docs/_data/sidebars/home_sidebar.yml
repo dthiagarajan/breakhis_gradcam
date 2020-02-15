@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: ResNet Backbone
       url: /resnet
+    - output: web,pdf
+      title: Title
+      url: /data
     output: web
     title: breakhis_gradcam
   output: web
