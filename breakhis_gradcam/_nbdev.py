@@ -13,7 +13,8 @@ index = {"model_urls": "00_resnet.ipynb",
          "resnet50": "00_resnet.ipynb",
          "resnet101": "00_resnet.ipynb",
          "resnet152": "00_resnet.ipynb",
-         "BreaKHisDataset": "01_data.ipynb"}
+         "BreaKHisDataset": "01_data.ipynb",
+         "initialize_datasets": "01_data.ipynb"}
 
 modules = ["resnet.py",
            "data.py"]
