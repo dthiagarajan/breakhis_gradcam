@@ -227,22 +227,7 @@ def initialize_datasets(
     data_dir, label='tumor_class', split={'train': 0.8, 'val': 0.2}, criterion=['tumor_class'],
     split_transforms={'train': None, 'val': None}
 ):
-    """Initializes a PyTorch dataset object for the data contained in `data_dir`.
-
-    ## Arguments:
-        * `data_dir` (str): the directory where the BreaKHis dataset was downloaded
-        * `label` (str): the label to use for the dataset (either 'tumor_class' or 'tumor_type')
-        * `split` (Dict[str, float]): a mapping of strings to floats corresponding to the percentage
-            in each split of the dataset; must add up to 1.
-        * `criterion` (List[str]): one of 'tumor_class' (benign/malignant) or
-            'tumor_type' (e.g. adenosis) and/or 'magnification'
-        * `split_transforms` (Dict[str, torchvision.transforms]): a mapping of split IDs to the
-            corresponding transforms.
-    ## Returns:
-        * data_partitioned (Dict[str, List]): mapping of data corresponding to the split IDs
-            given in `split`, and each split ID maps to a `BreaKHisDataset` encompassing the
-            list of data points, with the proper percentage of the dataset allocated to each split ID.
-    """
+    """Returns a `BreaKHisDataset` object for the data contained in `data_dir`."""
     return BreaKHisDataset.initalize(
         data_dir, label=label, criterion=criterion, split_transforms=split_transforms
     )

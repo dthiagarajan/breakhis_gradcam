@@ -2,6 +2,6 @@
   "breakhis_gradcam": {
     "Overview": "/",
     "ResNet Backbone": "/resnet",
-    "Title": "/data"
+    "BreaKHis Data Processing": "/data"
   }
 }

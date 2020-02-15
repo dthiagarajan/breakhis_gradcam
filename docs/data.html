@@ -1,11 +1,11 @@
 ---
 
-title: Title
+title: BreaKHis Data Processing
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "summary"
+summary: "The BreaKHis dataset is organized by benign and malignant tumors, and then by the specific tumor types. The functions provided here will help to quickly (lazily) process the data for usage in training image classification models, while maintaining the additional information that might not be necessary. For example, if training on benign/malignant labels, the information about which specific tumor is present will still be available in the dataset definition. The data is anonymized, so there's no possibility of splitting at the patient level. Instead, we leave dataset splitting up to the user, but provide some utility functions to reproduce the results obtained in initial development."
 ---
 <!--
 
@@ -21,17 +21,6 @@ summary: "summary"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="BreaKHis-Data-Processing">BreaKHis Data Processing<a class="anchor-link" href="#BreaKHis-Data-Processing">&#182;</a></h1><p>More information about the dataset can be found in the README obtained when downloading the dataset. The important information is in the appendix of this page. All images in this dataset are captured from an ROI determined by a professional pathologist, so all images are assumed to have <em>a</em> tumor.</p>
-<blockquote><p>The BreaKHis dataset is organized by benign and malignant tumors, and then by the specific tumor types: - For benign tumors, the images are organized additionally by: adenosis, fibroadenoma, phyllodes_tumor, tubular_adenoma- For malignant tumors, the images are organized additionally by: ductal_carcinoma, lobular_carcinoma, mucinous_carcinoma, papillary_carcinoma</p>
-<p>The functions provided here will help to quickly (lazily) process the data for usage in training image classification models, while maintaining the additional information that might not be necessary. For example, if training on benign/malignant labels, the information about which specific tumor is present will still be available in the dataset definition.</p>
-<p>The data is anonymized, so there's no possibility of splitting at the patient level. Instead, we leave dataset splitting up to the user, but provide some utility functions to reproduce the results obtained in initial development.</p>
-</blockquote>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -77,21 +66,7 @@ where the data was downloaded is sufficient.</p>
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="initialize_datasets" class="doc_header"><code>initialize_datasets</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L226" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize_datasets</code>(<strong><code>data_dir</code></strong>, <strong><code>label</code></strong>=<em><code>'tumor_class'</code></em>, <strong><code>split</code></strong>=<em><code>{'train': 0.8, 'val': 0.2}</code></em>, <strong><code>criterion</code></strong>=<em><code>['tumor_class']</code></em>, <strong><code>split_transforms</code></strong>=<em><code>{'train': None, 'val': None}</code></em>)</p>
 </blockquote>
-<p>Initializes a PyTorch dataset object for the data contained in <code>data_dir</code>.</p>
-<h2 id="Arguments:">Arguments:<a class="anchor-link" href="#Arguments:">&#182;</a></h2>
-<pre><code>* `data_dir` (str): the directory where the BreaKHis dataset was downloaded
-* `label` (str): the label to use for the dataset (either 'tumor_class' or 'tumor_type')
-* `split` (Dict[str, float]): a mapping of strings to floats corresponding to the percentage
-    in each split of the dataset; must add up to 1.
-* `criterion` (List[str]): one of 'tumor_class' (benign/malignant) or
-    'tumor_type' (e.g. adenosis) and/or 'magnification'
-* `split_transforms` (Dict[str, torchvision.transforms]): a mapping of split IDs to the
-    corresponding transforms.
-</code></pre>
-<h2 id="Returns:">Returns:<a class="anchor-link" href="#Returns:">&#182;</a></h2>
-<pre><code>* data_partitioned (Dict[str, List]): mapping of data corresponding to the split IDs
-    given in `split`, and each split ID maps to a [`BreaKHisDataset`](/breakhis_gradcam/data#BreaKHisDataset) encompassing the
-    list of data points, with the proper percentage of the dataset allocated to each split ID.</code></pre>
+<p>Returns a <a href="/breakhis_gradcam/data#BreaKHisDataset"><code>BreaKHisDataset</code></a> object for the data contained in <code>data_dir</code>.</p>
 
 </div>
 
@@ -105,9 +80,15 @@ where the data was downloaded is sufficient.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To create the dataset, you only need one function calls. Within this function call:</p>
 <ul>
-<li>You can specify the label type when initializing the dataset by specifying <code>label</code> in <code>initialize</code></li>
+<li>You can specify the label type when initializing the dataset by specifying <code>label</code> in <code>initialize</code><ul>
+<li>It must be 1 of 'tumor_class' or 'tumor_type'</li>
+</ul>
+</li>
 <li>You can make arbitrary splits of the data (within reason) when splitting the dataset via <code>split_dataset</code></li>
-<li>You can make sure to split equally within various criterion using <code>criterion</code>, which can include tumor class/tumor type, and magnification.</li>
+<li>You can make sure to split equally within various criterion using <code>criterion</code>, which can include tumor class/tumor type, and magnification.<ul>
+<li>You can not split equally by both tumor class and tumor type (error will be thrown if attempted).</li>
+</ul>
+</li>
 <li>You can use different transforms for different splits using <code>split_transforms</code>.</li>
 </ul>
 
@@ -306,7 +287,8 @@ where the data was downloaded is sufficient.</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h2><h3 id="Samples">Samples<a class="anchor-link" href="#Samples">&#182;</a></h3><ul>
+<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h2><p>All images in this dataset are captured from an ROI determined by a professional pathologist, so all images are assumed to have <em>a</em> tumor.</p>
+<h3 id="Samples">Samples<a class="anchor-link" href="#Samples">&#182;</a></h3><ul>
 <li>Samples are generated from breast tissue biopsy slides, stained with hematoxylin and eosin (HE).</li>
 <li>Prepared for histological study and labelled by pathologists of the P&amp;D Lab</li>
 <li>Breast tumor specimens assessed by Immunohistochemistry (IHC)</li>

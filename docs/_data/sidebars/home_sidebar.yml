@@ -13,7 +13,7 @@ entries:
       title: ResNet Backbone
       url: /resnet
     - output: web,pdf
-      title: Title
+      title: BreaKHis Data Processing
       url: /data
     output: web
     title: breakhis_gradcam
