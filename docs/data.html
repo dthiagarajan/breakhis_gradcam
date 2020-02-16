@@ -25,6 +25,13 @@ summary: "The BreaKHis dataset is organized by benign and malignant tumors, and 
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For reproducibility, the random seed (for both Numpy and PyTorch) are set to 31.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
@@ -37,7 +44,7 @@ summary: "The BreaKHis dataset is organized by benign and malignant tumors, and 
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="BreaKHisDataset" class="doc_header"><code>class</code> <code>BreaKHisDataset</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L14" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BreaKHisDataset</code>(<strong><code>dataset</code></strong>, <strong><code>transform</code></strong>=<em><code>None</code></em>) :: <code>Dataset</code></p>
+<h2 id="BreaKHisDataset" class="doc_header"><code>class</code> <code>BreaKHisDataset</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L17" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BreaKHisDataset</code>(<strong><code>dataset</code></strong>, <strong><code>transform</code></strong>=<em><code>None</code></em>) :: <code>Dataset</code></p>
 </blockquote>
 <p>PyTorch dataset definition of the BreaKHis dataset.</p>
 <p>Construction of the dataset object should be done using this
@@ -64,7 +71,7 @@ where the data was downloaded is sufficient.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="initialize_datasets" class="doc_header"><code>initialize_datasets</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L226" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize_datasets</code>(<strong><code>data_dir</code></strong>, <strong><code>label</code></strong>=<em><code>'tumor_class'</code></em>, <strong><code>split</code></strong>=<em><code>{'train': 0.8, 'val': 0.2}</code></em>, <strong><code>criterion</code></strong>=<em><code>['tumor_class']</code></em>, <strong><code>split_transforms</code></strong>=<em><code>{'train': None, 'val': None}</code></em>)</p>
+<h4 id="initialize_datasets" class="doc_header"><code>initialize_datasets</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L229" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize_datasets</code>(<strong><code>data_dir</code></strong>, <strong><code>label</code></strong>=<em><code>'tumor_class'</code></em>, <strong><code>split</code></strong>=<em><code>{'train': 0.8, 'val': 0.2}</code></em>, <strong><code>criterion</code></strong>=<em><code>['tumor_class']</code></em>, <strong><code>split_transforms</code></strong>=<em><code>{'train': None, 'val': None}</code></em>)</p>
 </blockquote>
 <p>Returns a <a href="/breakhis_gradcam/data#BreaKHisDataset"><code>BreaKHisDataset</code></a> object for the data contained in <code>data_dir</code>.</p>
 
@@ -173,59 +180,30 @@ where the data was downloaded is sufficient.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(tensor([[[-2.1577, -2.1577, -2.1577,  ...,  1.4091,  1.4091,  1.4091],
-          [-2.1577, -2.1577, -2.1577,  ...,  1.4091,  1.4091,  1.4091],
-          [-2.1577, -2.1577, -2.1577,  ...,  1.4091,  1.4091,  1.3898],
+<pre>(tensor([[[-2.4291, -2.4291, -2.4291,  ...,  0.8082,  0.7888,  0.8082],
+          [-2.4291, -2.4291, -2.4291,  ...,  0.8082,  0.7888,  0.7888],
+          [-2.4291, -2.4291, -2.4291,  ...,  0.8082,  0.8082,  0.7501],
           ...,
-          [ 1.2541,  1.2541,  1.2735,  ...,  1.4285,  1.3704,  1.3510],
-          [ 1.2928,  1.3122,  1.2928,  ...,  1.2928,  1.3122,  1.2928],
-          [ 1.3510,  1.3704,  1.3316,  ...,  1.3510,  1.3122,  1.2541]],
+          [ 0.6725,  0.6144,  0.2654,  ...,  0.4399,  0.3624,  0.0522],
+          [ 0.4981,  0.6338,  0.5174,  ...,  0.3236,  0.3817,  0.1297],
+          [ 0.3430,  0.3624,  0.4593,  ...,  0.3624,  0.3042,  0.0522]],
  
-         [[-2.1429, -2.1429, -2.1429,  ...,  1.6921,  1.6921,  1.6528],
-          [-2.1429, -2.1429, -2.1429,  ...,  1.7118,  1.6724,  1.6921],
-          [-2.1429, -2.1429, -2.1429,  ...,  1.7314,  1.7314,  1.6724],
+         [[-2.4183, -2.4183, -2.4183,  ...,  0.9251,  0.9251,  0.9251],
+          [-2.4183, -2.4183, -2.4183,  ...,  0.9251,  0.9054,  0.9251],
+          [-2.4183, -2.4183, -2.4183,  ...,  0.9251,  0.9251,  0.9054],
           ...,
-          [ 0.4728,  0.3941,  0.3941,  ...,  0.9841,  0.9448,  0.9841],
-          [ 0.4728,  0.4138,  0.3941,  ...,  0.8464,  0.9054,  0.8464],
-          [ 0.4531,  0.4531,  0.3941,  ...,  0.8464,  0.8464,  0.7678]],
+          [ 0.2564,  0.2564, -0.0189,  ...,  0.5121,  0.4531,  0.0598],
+          [ 0.0598,  0.1778,  0.1581,  ...,  0.3744,  0.4138,  0.1188],
+          [-0.1566, -0.0976,  0.0204,  ...,  0.4531,  0.3548,  0.0991]],
  
-         [[-1.9482, -1.9482, -1.9482,  ...,  1.5831,  1.5831,  1.5831],
-          [-1.9482, -1.9482, -1.9482,  ...,  1.5831,  1.5636,  1.6026],
-          [-1.9482, -1.9482, -1.9482,  ...,  1.5246,  1.5246,  1.5636],
+         [[-2.2214, -2.2214, -2.2214,  ...,  0.8027,  0.8027,  0.8027],
+          [-2.2214, -2.2214, -2.2214,  ...,  0.7832,  0.7637,  0.7832],
+          [-2.2214, -2.2214, -2.2214,  ...,  0.8027,  0.7832,  0.7832],
           ...,
-          [ 1.3100,  1.2514,  1.3100,  ...,  1.6026,  1.5441,  1.5636],
-          [ 1.3295,  1.3100,  1.3295,  ...,  1.4661,  1.4856,  1.4856],
-          [ 1.3295,  1.3295,  1.3295,  ...,  1.5246,  1.4856,  1.3880]]]),
- tensor([0.]))</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">tr_ds</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_ds</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(6316, 1593)</pre>
+          [ 1.0368,  0.9978,  0.7052,  ...,  0.9588,  0.9588,  0.6661],
+          [ 0.8807,  0.9978,  0.9198,  ...,  0.8807,  0.9783,  0.8027],
+          [ 0.7442,  0.8027,  0.8612,  ...,  0.9588,  0.9588,  0.7637]]]),
+ tensor(0))</pre>
 </div>
 
 </div>
@@ -276,7 +254,7 @@ where the data was downloaded is sufficient.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(torch.Size([32, 3, 224, 224]), torch.Size([32, 1]))</pre>
+<pre>(torch.Size([32, 3, 224, 224]), torch.Size([32]))</pre>
 </div>
 
 </div>

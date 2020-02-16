@@ -10,6 +10,9 @@ import torch
 from PIL import Image
 from torchvision import transforms
 
+np.random.seed(31)
+torch.manual_seed(31);
+
 # Cell
 class BreaKHisDataset(torch.utils.data.Dataset):
     """ PyTorch dataset definition of the BreaKHis dataset.
@@ -38,7 +41,7 @@ class BreaKHisDataset(torch.utils.data.Dataset):
         (fp, tumor, subtumor, magnification, slide_id, sequence_id), label = self.dataset[index]
         image = Image.open(fp)
         data = self.transform(image) if image else image
-        return data, torch.Tensor([label])
+        return data, torch.Tensor([label]).long().squeeze()
 
     def __len__(self):
         return len(self.dataset)
