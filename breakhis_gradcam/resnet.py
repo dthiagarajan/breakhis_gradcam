@@ -27,7 +27,7 @@ def conv3x3(in_planes, out_planes, stride=1):
         padding=1, bias=False
     )
 
-
+# Cell
 def conv1x1(in_planes, out_planes, stride=1):
     """Return a 1x1 convolution taking in `in_planes` filters and outputting
        `out_planes` filters with padding and stride `stride`."""
@@ -69,7 +69,7 @@ class BasicBlock(nn.Module):
 
         return out
 
-
+# Cell
 class Bottleneck(nn.Module):
     """The bottleneck building block for ResNets, encompassing the residual connection. Takes in
        `inplanes` number of input filters, outputs `planes` number of output filters, with
