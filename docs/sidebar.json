@@ -3,6 +3,7 @@
     "Overview": "/",
     "ResNet Backbone": "/resnet",
     "BreaKHis Data Processing": "/data",
-    "Utilities": "/utils"
+    "Utilities": "/utils",
+    "Visualization": "/vis"
   }
 }

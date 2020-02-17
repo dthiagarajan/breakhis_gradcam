@@ -4,6 +4,9 @@ __all__ = ['model_urls', 'conv3x3', 'conv1x1', 'BasicBlock', 'Bottleneck', 'ResN
            'resnet101', 'resnet152']
 
 # Cell
+import os
+import shutil
+import time
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 
@@ -110,14 +113,14 @@ class Bottleneck(nn.Module):
 
 # Cell
 class ResNet(nn.Module):
-    """Constructs a ResNet using a block specification and number of layers.
-
-    Args:
-        `block`: the building block for the ResNet (i.e. `BasicBlock` or `Bottleneck`)
-        `layers`: a list of 4 integers, specifying the number of layers in each block
-        `num_classes`: the number of output classes (defaults to 1000)
-    """
-    def __init__(self, block, layers, num_classes=1000):
+    """Constructs a ResNet using a block specification and number of layers. Also specifies where to
+       output training logs and model/system state."""
+    def __init__(
+        self, block, layers, num_classes=1000,
+        log_dir = '/share/nikola/export/dt372/breakhis_gradcam/logs',
+        save_dir = '/share/nikola/export/dt372/breakhis_gradcam/models',
+        create_log_and_save_dirs=True
+    ):
         super(ResNet, self).__init__()
         self.inplanes = 64
         self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3,
@@ -138,6 +141,27 @@ class ResNet(nn.Module):
             elif isinstance(m, nn.BatchNorm2d):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
+
+        if create_log_and_save_dirs:
+            self.setup_logging_and_output_dirs(log_dir, save_dir)
+
+    def setup_logging_and_output_dirs(self, log_dir, save_dir):
+        timestamp = time.strftime("%Y-%m-%d-%H-%M-%S", time.gmtime())
+        self.log_dir = os.path.join(log_dir, timestamp)
+        os.mkdir(self.log_dir)
+        self.save_dir = os.path.join(save_dir, timestamp)
+        os.mkdir(self.save_dir)
+
+    def clear_logging_and_output_dirs(self):
+        assert self.log_dir and self.save_dir, "The logging and output directories were never created."
+        print("Removing directory %s and all contents." % self.log_dir)
+        shutil.rmtree(self.log_dir, ignore_errors=False, onerror=None)
+        print("Removing directory %s and all contents." % self.save_dir)
+        shutil.rmtree(self.save_dir, ignore_errors=False, onerror=None)
+
+        print("Resetting %s and %s." % (self.log_dir, self.save_dir))
+        os.mkdir(self.log_dir)
+        os.mkdir(self.save_dir)
 
     def _make_layer(self, block, planes, blocks, stride=1):
         downsample = None
@@ -174,10 +198,7 @@ class ResNet(nn.Module):
 
 # Cell
 def resnet18(pretrained=False, **kwargs):
-    """Constructs a ResNet-18 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
+    """Constructs a ResNet-18 model."""
     model = ResNet(BasicBlock, [2, 2, 2, 2], **kwargs)
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['resnet18']), strict=False)
@@ -185,10 +206,7 @@ def resnet18(pretrained=False, **kwargs):
 
 
 def resnet34(pretrained=False, **kwargs):
-    """Constructs a ResNet-34 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
+    """Constructs a ResNet-34 model."""
     model = ResNet(BasicBlock, [3, 4, 6, 3], **kwargs)
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['resnet34']), strict=False)
@@ -196,10 +214,7 @@ def resnet34(pretrained=False, **kwargs):
 
 
 def resnet50(pretrained=False, **kwargs):
-    """Constructs a ResNet-50 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
+    """Constructs a ResNet-50 model."""
     model = ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['resnet50']), strict=False)
@@ -207,10 +222,7 @@ def resnet50(pretrained=False, **kwargs):
 
 
 def resnet101(pretrained=False, **kwargs):
-    """Constructs a ResNet-101 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
+    """Constructs a ResNet-101 model."""
     model = ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['resnet101']), strict=False)
@@ -218,10 +230,7 @@ def resnet101(pretrained=False, **kwargs):
 
 
 def resnet152(pretrained=False, **kwargs):
-    """Constructs a ResNet-152 model.
-    Args:
-        pretrained (bool): If True, returns a model pre-trained on ImageNet
-    """
+    """Constructs a ResNet-152 model."""
     model = ResNet(Bottleneck, [3, 8, 36, 3], **kwargs)
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['resnet152']), strict=False)

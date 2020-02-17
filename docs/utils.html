@@ -37,7 +37,7 @@ summary: "The utility functions here can be used for training and evaluation of 
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mixup_data" class="doc_header"><code>mixup_data</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L16" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>mixup_data</code>(<strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>criterion</code></strong>, <strong><code>alpha</code></strong>=<em><code>1.0</code></em>)</p>
+<h4 id="mixup_data" class="doc_header"><code>mixup_data</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L18" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>mixup_data</code>(<strong><code>x</code></strong>, <strong><code>y</code></strong>, <strong><code>criterion</code></strong>, <strong><code>alpha</code></strong>=<em><code>1.0</code></em>)</p>
 </blockquote>
 <p>Compute the mixup data for batch <code>x, y</code>. Return mixed inputs, pairs of targets, and lambda.</p>
 
@@ -73,12 +73,47 @@ summary: "The utility functions here can be used for training and evaluation of 
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="train" class="doc_header"><code>train</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L44" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>train</code>(<strong><code>model</code></strong>, <strong><code>epoch</code></strong>, <strong><code>dataloader</code></strong>, <strong><code>criterion</code></strong>, <strong><code>optimizer</code></strong>, <strong><code>scheduler</code></strong>=<em><code>None</code></em>, <strong><code>mixup</code></strong>=<em><code>False</code></em>, <strong><code>alpha</code></strong>=<em><code>0.4</code></em>, <strong><code>logging_frequency</code></strong>=<em><code>50</code></em>)</p>
+<h4 id="setup_logging_streams" class="doc_header"><code>setup_logging_streams</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L46" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>setup_logging_streams</code>(<strong><code>model</code></strong>, <strong><code>log_to_file</code></strong>=<em><code>True</code></em>, <strong><code>log_to_stdout</code></strong>=<em><code>False</code></em>)</p>
+</blockquote>
+<p>Utility function for setting up logging handlers for <code>model</code>.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This function helps set up logging functionality for readable outputted metrics.</p>
+<ul>
+<li><code>model</code> should be the model constructed from the ResNet helper functions. They are initialized with logging and output directories by default, as long as you specify existing overarching model and logging directories.</li>
+<li><code>log_to_file</code> specifies whether to output to a metrics log file in the model's logging directory</li>
+<li><code>log_to_stdout</code> specifies whether to output metrics to STDOUT</li>
+</ul>
+<p>The function returns a closure that, when called, will clear any handlers set up in the logging module for outputting to log file or STDOUT, depending on what was specified. To avoid any confusion when logging between training runs in the same notebook, it's important to call this closure to not have redundant logging.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="train" class="doc_header"><code>train</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L78" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>train</code>(<strong><code>model</code></strong>, <strong><code>epoch</code></strong>, <strong><code>dataloader</code></strong>, <strong><code>criterion</code></strong>, <strong><code>optimizer</code></strong>, <strong><code>scheduler</code></strong>=<em><code>None</code></em>, <strong><code>mixup</code></strong>=<em><code>False</code></em>, <strong><code>alpha</code></strong>=<em><code>0.4</code></em>, <strong><code>logging_frequency</code></strong>=<em><code>50</code></em>)</p>
 </blockquote>
 <p>Trains <code>model</code> on data in <code>dataloader</code> with loss <code>criterion</code> and optimization scheme
-defined by <code>optimizer</code>, with optional learning schedule defined by <code>scheduler</code>. This
-function calls performs 1 epoch - passing in <code>epoch</code> is purely for logging clarity.
-Logs every <code>logging_frequency</code> iterations.</p>
+defined by <code>optimizer</code>, with optional learning schedule defined by <code>scheduler</code>.</p>
 
 </div>
 
@@ -118,7 +153,7 @@ Logs every <code>logging_frequency</code> iterations.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="validate" class="doc_header"><code>validate</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L98" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>validate</code>(<strong><code>model</code></strong>, <strong><code>epoch</code></strong>, <strong><code>dataloader</code></strong>, <strong><code>criterion</code></strong>, <strong><code>tta</code></strong>=<em><code>False</code></em>, <strong><code>tta_mixing</code></strong>=<em><code>0.6</code></em>, <strong><code>logging_frequency</code></strong>=<em><code>50</code></em>)</p>
+<h4 id="validate" class="doc_header"><code>validate</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L129" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>validate</code>(<strong><code>model</code></strong>, <strong><code>epoch</code></strong>, <strong><code>dataloader</code></strong>, <strong><code>criterion</code></strong>, <strong><code>tta</code></strong>=<em><code>False</code></em>, <strong><code>tta_mixing</code></strong>=<em><code>0.6</code></em>, <strong><code>logging_frequency</code></strong>=<em><code>50</code></em>)</p>
 </blockquote>
 <p>Validates <code>model</code> on data in <code>dataloader</code> for epoch <code>epoch</code> using objective <code>criterion</code>.</p>
 
@@ -262,14 +297,48 @@ Logs every <code>logging_frequency</code> iterations.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tr_loss</span><span class="p">,</span> <span class="n">tr_acc</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tr_dl</span><span class="p">,</span> <span class="n">criterion</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">mixup</span><span class="o">=</span><span class="n">mixup</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
-    <span class="n">logging_frequency</span><span class="o">=</span><span class="mi">25</span>
-<span class="p">)</span>
-<span class="n">val_loss</span><span class="p">,</span> <span class="n">val_acc</span> <span class="o">=</span> <span class="n">validate</span><span class="p">(</span>
-    <span class="n">model</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">val_dl</span><span class="p">,</span> <span class="n">criterion</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">],</span> <span class="n">tta</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">logging_frequency</span><span class="o">=</span><span class="mi">25</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">resnet18</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">([{</span><span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">out_fc</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="mf">1e-3</span><span class="p">}])</span>
+<span class="n">mixup</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">(</span><span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span> <span class="k">if</span> <span class="n">mixup</span> <span class="k">else</span> <span class="s1">&#39;mean&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The training loop might include something like the following. Note the calls to <code>clear_logging_handlers</code> - this should be included in your code as well to avoid logging redundancy.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">clear_logging_handlers</span> <span class="o">=</span> <span class="n">setup_logging_streams</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">log_to_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">log_to_stdout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">tr_loss</span><span class="p">,</span> <span class="n">tr_acc</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tr_dl</span><span class="p">,</span> <span class="n">criterion</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">mixup</span><span class="o">=</span><span class="n">mixup</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+        <span class="n">logging_frequency</span><span class="o">=</span><span class="mi">25</span>
+    <span class="p">)</span>
+    <span class="n">val_loss</span><span class="p">,</span> <span class="n">val_acc</span> <span class="o">=</span> <span class="n">validate</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">val_dl</span><span class="p">,</span> <span class="n">criterion</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">],</span> <span class="n">tta</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">logging_frequency</span><span class="o">=</span><span class="mi">25</span>
+    <span class="p">)</span>
+<span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+    <span class="n">clear_logging_handlers</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">clear_logging_handlers</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -281,15 +350,56 @@ Logs every <code>logging_frequency</code> iterations.</p>
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>[Epoch 0, Iteration 25 / 198] Training Loss: 0.46333, Training Accuracy: 2.17543 [Projected Accuracy: 17.22939]
-[Epoch 0, Iteration 50 / 198] Training Loss: 0.47674, Training Accuracy: 4.24937 [Projected Accuracy: 16.82749]
-[Epoch 0, Iteration 75 / 198] Training Loss: 0.48411, Training Accuracy: 6.35830 [Projected Accuracy: 16.78590]
-[Epoch 0, Iteration 100 / 198] Training Loss: 0.47731, Training Accuracy: 8.50142 [Projected Accuracy: 16.83282]
-[Epoch 0, Iteration 125 / 198] Training Loss: 0.47459, Training Accuracy: 10.64962 [Projected Accuracy: 16.86900]
-[Epoch 0, Iteration 150 / 198] Training Loss: 0.47411, Training Accuracy: 12.74208 [Projected Accuracy: 16.81955]
-[Epoch 0, Iteration 175 / 198] Training Loss: 0.47475, Training Accuracy: 14.79908 [Projected Accuracy: 16.74410]
-[Epoch 0, Iteration 25 / 50] Validation Loss: 0.42023, Validation Accuracy: 0.44005 [Validation Accuracy: 0.88010]
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Logging to /share/nikola/export/dt372/breakhis_gradcam/logs/2020-02-16-23-18-10/metrics.log
+Logging to STDOUT
+[Metrics][02:16:2020:06:18:29][DEBUG]: [Epoch 0, Iteration 25 / 198] Training Loss: 0.63333, Training Accuracy: 1.94728 [Projected Accuracy: 15.42243]
+[Metrics][02:16:2020:06:18:41][DEBUG]: [Epoch 0, Iteration 50 / 198] Training Loss: 0.58616, Training Accuracy: 3.94854 [Projected Accuracy: 15.63623]
+[Metrics][02:16:2020:06:18:54][DEBUG]: [Epoch 0, Iteration 75 / 198] Training Loss: 0.56723, Training Accuracy: 5.90912 [Projected Accuracy: 15.60008]
+[Metrics][02:16:2020:06:19:07][DEBUG]: [Epoch 0, Iteration 100 / 198] Training Loss: 0.55472, Training Accuracy: 7.89645 [Projected Accuracy: 15.63498]
+[Metrics][02:16:2020:06:19:21][DEBUG]: [Epoch 0, Iteration 125 / 198] Training Loss: 0.54388, Training Accuracy: 9.99066 [Projected Accuracy: 15.82520]
+[Metrics][02:16:2020:06:19:34][DEBUG]: [Epoch 0, Iteration 150 / 198] Training Loss: 0.53556, Training Accuracy: 12.05890 [Projected Accuracy: 15.91775]
+[Metrics][02:16:2020:06:19:47][DEBUG]: [Epoch 0, Iteration 175 / 198] Training Loss: 0.52685, Training Accuracy: 14.26282 [Projected Accuracy: 16.13737]
+[Metrics][02:16:2020:06:19:58][INFO]: Reporting 0.52171 training loss, 15.97910 training accuracy for epoch 0.
+[Metrics][02:16:2020:06:20:50][DEBUG]: [Epoch 0, Iteration 25 / 50] Validation Loss: 0.41677, Validation Accuracy: 0.46014 [Validation Accuracy: 0.92028]
+[Metrics][02:16:2020:06:21:36][INFO]: Reporting 0.41893 validation loss, 0.87947 validation accuracy for epoch 0.
+Cleared all logging handlers
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since we were just testing here, it might be annoying to have find the log and state files later to remove for saving memory. However, we can just do the following to resolve that (this will delete all the contents to clear the log and model/system state directory):</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">clear_logging_and_output_dirs</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Removing directory /share/nikola/export/dt372/breakhis_gradcam/logs/2020-02-16-23-18-10 and all contents.
+Removing directory /share/nikola/export/dt372/breakhis_gradcam/models/2020-02-16-23-18-10 and all contents.
+Resetting /share/nikola/export/dt372/breakhis_gradcam/logs/2020-02-16-23-18-10 and /share/nikola/export/dt372/breakhis_gradcam/models/2020-02-16-23-18-10.
 </pre>
 </div>
 </div>
@@ -310,7 +420,7 @@ Logs every <code>logging_frequency</code> iterations.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_param_lr_maps" class="doc_header"><code>get_param_lr_maps</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L146" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_param_lr_maps</code>(<strong><code>model</code></strong>, <strong><code>base_lr</code></strong>, <strong><code>finetune_body_factor</code></strong>)</p>
+<h4 id="get_param_lr_maps" class="doc_header"><code>get_param_lr_maps</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_param_lr_maps</code>(<strong><code>model</code></strong>, <strong><code>base_lr</code></strong>, <strong><code>finetune_body_factor</code></strong>)</p>
 </blockquote>
 <p>Output parameter LR mappings for setting up an optimizer for <code>model</code>.</p>
 
@@ -346,7 +456,7 @@ Logs every <code>logging_frequency</code> iterations.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="setup_optimizer_and_scheduler" class="doc_header"><code>setup_optimizer_and_scheduler</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L179" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>setup_optimizer_and_scheduler</code>(<strong><code>param_lr_maps</code></strong>, <strong><code>base_lr</code></strong>, <strong><code>epochs</code></strong>, <strong><code>steps_per_epoch</code></strong>)</p>
+<h4 id="setup_optimizer_and_scheduler" class="doc_header"><code>setup_optimizer_and_scheduler</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L212" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>setup_optimizer_and_scheduler</code>(<strong><code>param_lr_maps</code></strong>, <strong><code>base_lr</code></strong>, <strong><code>epochs</code></strong>, <strong><code>steps_per_epoch</code></strong>)</p>
 </blockquote>
 <p>Create a PyTorch AdamW optimizer and OneCycleLR scheduler with <code>param_lr_maps</code> parameter mapping,
 with base LR <code>base_lr</code>, for training for <code>epochs</code> epochs, with <code>steps_per_epoch</code> iterations
@@ -369,7 +479,7 @@ per epoch.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="checkpoint_state" class="doc_header"><code>checkpoint_state</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L189" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>checkpoint_state</code>(<strong><code>model</code></strong>, <strong><code>epoch</code></strong>, <strong><code>optimizer</code></strong>, <strong><code>scheduler</code></strong>, <strong><code>train_loss</code></strong>, <strong><code>train_acc</code></strong>, <strong><code>val_loss</code></strong>, <strong><code>val_acc</code></strong>, <strong><code>model_dir</code></strong>=<em><code>'/share/nikola/export/dt372/breakhis_gradcam/models'</code></em>)</p>
+<h4 id="checkpoint_state" class="doc_header"><code>checkpoint_state</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/utils.py#L222" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>checkpoint_state</code>(<strong><code>model</code></strong>, <strong><code>epoch</code></strong>, <strong><code>optimizer</code></strong>, <strong><code>scheduler</code></strong>, <strong><code>train_loss</code></strong>, <strong><code>train_acc</code></strong>, <strong><code>val_loss</code></strong>, <strong><code>val_acc</code></strong>)</p>
 </blockquote>
 <p>Checkpoint the state of the system, including <code>model</code> state, <code>optimizer</code> state, <code>scheduler</code>
 state, for <code>epoch</code>, saving the metrics as well.</p>
@@ -413,20 +523,6 @@ state, for <code>epoch</code>, saving the metrics as well.</p>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Setting up optimizer to fine-tune body with LR in range [0.00000001, 0.00001000] and head with LR 0.00100
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -446,7 +542,8 @@ state, for <code>epoch</code>, saving the metrics as well.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">clear_logging_handlers</span> <span class="o">=</span> <span class="n">setup_logging_streams</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">log_to_file</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">log_to_stdout</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
     <span class="n">tr_loss</span><span class="p">,</span> <span class="n">tr_acc</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span>
         <span class="n">model</span><span class="p">,</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tr_dl</span><span class="p">,</span> <span class="n">criterion</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">scheduler</span><span class="o">=</span><span class="n">scheduler</span><span class="p">,</span>
         <span class="n">mixup</span><span class="o">=</span><span class="n">mixup</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">logging_frequency</span><span class="o">=</span><span class="mi">25</span>
@@ -458,6 +555,7 @@ state, for <code>epoch</code>, saving the metrics as well.</p>
     <span class="n">checkpoint_state</span><span class="p">(</span>
         <span class="n">model</span><span class="p">,</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">,</span> <span class="n">tr_loss</span><span class="p">,</span> <span class="n">tr_acc</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">,</span>
     <span class="p">)</span>
+<span class="n">clear_logging_handlers</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -469,47 +567,9 @@ state, for <code>epoch</code>, saving the metrics as well.</p>
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>[Epoch 1, Iteration 25 / 198] Training Loss: 0.61779, Training Accuracy: 1.66688 [Projected Accuracy: 13.20167]
-[Epoch 1, Iteration 50 / 198] Training Loss: 0.53964, Training Accuracy: 3.76124 [Projected Accuracy: 14.89452]
-[Epoch 1, Iteration 75 / 198] Training Loss: 0.50664, Training Accuracy: 5.83344 [Projected Accuracy: 15.40028]
-[Epoch 1, Iteration 100 / 198] Training Loss: 0.50104, Training Accuracy: 7.81111 [Projected Accuracy: 15.46601]
-[Epoch 1, Iteration 125 / 198] Training Loss: 0.49492, Training Accuracy: 10.04433 [Projected Accuracy: 15.91022]
-[Epoch 1, Iteration 150 / 198] Training Loss: 0.48815, Training Accuracy: 12.14424 [Projected Accuracy: 16.03039]
-[Epoch 1, Iteration 175 / 198] Training Loss: 0.48081, Training Accuracy: 14.39566 [Projected Accuracy: 16.28766]
-[Epoch 1, Iteration 25 / 50] Validation Loss: 0.50810, Validation Accuracy: 0.38920 [Validation Accuracy: 0.77841]
-[Epoch 2, Iteration 25 / 198] Training Loss: 0.44745, Training Accuracy: 2.18651 [Projected Accuracy: 17.31716]
-[Epoch 2, Iteration 50 / 198] Training Loss: 0.44490, Training Accuracy: 4.31444 [Projected Accuracy: 17.08518]
-[Epoch 2, Iteration 75 / 198] Training Loss: 0.43113, Training Accuracy: 6.45250 [Projected Accuracy: 17.03460]
-[Epoch 2, Iteration 100 / 198] Training Loss: 0.42757, Training Accuracy: 8.56523 [Projected Accuracy: 16.95916]
-[Epoch 2, Iteration 125 / 198] Training Loss: 0.42541, Training Accuracy: 10.73876 [Projected Accuracy: 17.01019]
-[Epoch 2, Iteration 150 / 198] Training Loss: 0.42320, Training Accuracy: 12.91450 [Projected Accuracy: 17.04714]
-[Epoch 2, Iteration 175 / 198] Training Loss: 0.42172, Training Accuracy: 15.05478 [Projected Accuracy: 17.03341]
-[Epoch 2, Iteration 25 / 50] Validation Loss: 0.31465, Validation Accuracy: 0.47646 [Validation Accuracy: 0.95292]
-[Epoch 3, Iteration 25 / 198] Training Loss: 0.41465, Training Accuracy: 2.23876 [Projected Accuracy: 17.73097]
-[Epoch 3, Iteration 50 / 198] Training Loss: 0.39440, Training Accuracy: 4.43762 [Projected Accuracy: 17.57297]
-[Epoch 3, Iteration 75 / 198] Training Loss: 0.40363, Training Accuracy: 6.61241 [Projected Accuracy: 17.45677]
-[Epoch 3, Iteration 100 / 198] Training Loss: 0.40729, Training Accuracy: 8.78230 [Projected Accuracy: 17.38895]
-[Epoch 3, Iteration 125 / 198] Training Loss: 0.40448, Training Accuracy: 11.01662 [Projected Accuracy: 17.45033]
-[Epoch 3, Iteration 150 / 198] Training Loss: 0.40535, Training Accuracy: 13.25095 [Projected Accuracy: 17.49125]
-[Epoch 3, Iteration 175 / 198] Training Loss: 0.40613, Training Accuracy: 15.48638 [Projected Accuracy: 17.52174]
-[Epoch 3, Iteration 25 / 50] Validation Loss: 0.55899, Validation Accuracy: 0.35782 [Validation Accuracy: 0.71563]
-[Epoch 4, Iteration 25 / 198] Training Loss: 0.39973, Training Accuracy: 2.23939 [Projected Accuracy: 17.73598]
-[Epoch 4, Iteration 50 / 198] Training Loss: 0.39833, Training Accuracy: 4.40279 [Projected Accuracy: 17.43503]
-[Epoch 4, Iteration 75 / 198] Training Loss: 0.38543, Training Accuracy: 6.70108 [Projected Accuracy: 17.69084]
-[Epoch 4, Iteration 100 / 198] Training Loss: 0.38818, Training Accuracy: 8.88474 [Projected Accuracy: 17.59178]
-[Epoch 4, Iteration 125 / 198] Training Loss: 0.38387, Training Accuracy: 11.10038 [Projected Accuracy: 17.58300]
-[Epoch 4, Iteration 150 / 198] Training Loss: 0.37873, Training Accuracy: 13.32695 [Projected Accuracy: 17.59157]
-[Epoch 4, Iteration 175 / 198] Training Loss: 0.37771, Training Accuracy: 15.57853 [Projected Accuracy: 17.62599]
-[Epoch 4, Iteration 25 / 50] Validation Loss: 0.29945, Validation Accuracy: 0.48964 [Validation Accuracy: 0.97928]
-[Epoch 5, Iteration 25 / 198] Training Loss: 0.35548, Training Accuracy: 2.35893 [Projected Accuracy: 18.68272]
-[Epoch 5, Iteration 50 / 198] Training Loss: 0.34854, Training Accuracy: 4.55272 [Projected Accuracy: 18.02878]
-[Epoch 5, Iteration 75 / 198] Training Loss: 0.35551, Training Accuracy: 6.67052 [Projected Accuracy: 17.61017]
-[Epoch 5, Iteration 100 / 198] Training Loss: 0.35722, Training Accuracy: 8.90991 [Projected Accuracy: 17.64162]
-[Epoch 5, Iteration 125 / 198] Training Loss: 0.35682, Training Accuracy: 11.05351 [Projected Accuracy: 17.50877]
-[Epoch 5, Iteration 150 / 198] Training Loss: 0.35697, Training Accuracy: 13.18857 [Projected Accuracy: 17.40891]
-[Epoch 5, Iteration 175 / 198] Training Loss: 0.35440, Training Accuracy: 15.39756 [Projected Accuracy: 17.42124]
-[Epoch 5, Iteration 25 / 50] Validation Loss: 0.31663, Validation Accuracy: 0.48023 [Validation Accuracy: 0.96045]
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Logging to /share/nikola/export/dt372/breakhis_gradcam/logs/2020-02-16-23-22-02/metrics.log
+Cleared all logging handlers
 </pre>
 </div>
 </div>
@@ -572,22 +632,8 @@ state, for <code>epoch</code>, saving the metrics as well.</p>
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>[Epoch 5, Iteration 25 / 198] Validation Loss: 0.16696, Validation Accuracy: 0.12666 [Validation Accuracy: 1.00317]
-[Epoch 5, Iteration 50 / 198] Validation Loss: 0.17132, Validation Accuracy: 0.24731 [Validation Accuracy: 0.97934]
-[Epoch 5, Iteration 75 / 198] Validation Loss: 0.17119, Validation Accuracy: 0.36859 [Validation Accuracy: 0.97307]
-[Epoch 5, Iteration 100 / 198] Validation Loss: 0.16980, Validation Accuracy: 0.49003 [Validation Accuracy: 0.97025]
-[Epoch 5, Iteration 125 / 198] Validation Loss: 0.16848, Validation Accuracy: 0.61257 [Validation Accuracy: 0.97031]
-[Epoch 5, Iteration 150 / 198] Validation Loss: 0.16889, Validation Accuracy: 0.73385 [Validation Accuracy: 0.96868]
-[Epoch 5, Iteration 175 / 198] Validation Loss: 0.16793, Validation Accuracy: 0.85529 [Validation Accuracy: 0.96770]
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Training accuracy after 5 epochs is 0.95836
+<pre>Training accuracy after 5 epochs is 0.96358
 </pre>
 </div>
 </div>

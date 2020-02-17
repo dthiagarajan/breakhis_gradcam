@@ -31,6 +31,9 @@ class BreaKHisDataset(torch.utils.data.Dataset):
             ])
         }
     }
+    index_mapping = {
+        k: {iv: kv for (kv, iv) in v.items()} for (k, v) in label_mapping.items()
+    }
 
     def __init__(self, dataset, transform=None):
         self.dataset = dataset
@@ -232,5 +235,5 @@ def initialize_datasets(
 ):
     """Returns a `BreaKHisDataset` object for the data contained in `data_dir`."""
     return BreaKHisDataset.initalize(
-        data_dir, label=label, criterion=criterion, split_transforms=split_transforms
+        data_dir, label=label, criterion=criterion, split=split, split_transforms=split_transforms
     )

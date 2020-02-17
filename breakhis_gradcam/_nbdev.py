@@ -17,15 +17,20 @@ index = {"model_urls": "00_resnet.ipynb",
          "initialize_datasets": "01_data.ipynb",
          "log": "02_utils.ipynb",
          "mixup_data": "02_utils.ipynb",
+         "setup_logging_streams": "02_utils.ipynb",
          "train": "02_utils.ipynb",
          "validate": "02_utils.ipynb",
          "get_param_lr_maps": "02_utils.ipynb",
          "setup_optimizer_and_scheduler": "02_utils.ipynb",
-         "checkpoint_state": "02_utils.ipynb"}
+         "checkpoint_state": "02_utils.ipynb",
+         "show_image": "03_vis.ipynb",
+         "get_preprocessed_image": "03_vis.ipynb",
+         "show_heatmap_and_original": "03_vis.ipynb"}
 
 modules = ["resnet.py",
            "data.py",
-           "utils.py"]
+           "utils.py",
+           "vis.py"]
 
 doc_url = "https://dthiagarajan.github.io/breakhis_gradcam/"
 
