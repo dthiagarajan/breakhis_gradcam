@@ -37,10 +37,11 @@ summary: "Functions to set up a ImageNet pre-trained ResNet backbone to fine-tun
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="conv3x3" class="doc_header"><code>conv3x3</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv3x3</code>(<strong><code>in_planes</code></strong>, <strong><code>out_planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>)</p>
+<h4 id="conv3x3" class="doc_header"><code>conv3x3</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L24" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv3x3</code>(<strong><code>in_planes</code></strong>, <strong><code>out_planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>)</p>
 </blockquote>
-<p>Return a 3x3 convolution taking in <code>in_planes</code> filters and outputting
-<code>out_planes</code> filters with padding and stride <code>stride</code>.</p>
+
+<pre><code>Return a 3x3 convolution taking in `in_planes` filters and outputting
+`out_planes` filters with padding and stride `stride`.</code></pre>
 
 </div>
 
@@ -62,10 +63,11 @@ summary: "Functions to set up a ImageNet pre-trained ResNet backbone to fine-tun
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="conv1x1" class="doc_header"><code>conv1x1</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L31" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv1x1</code>(<strong><code>in_planes</code></strong>, <strong><code>out_planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>)</p>
+<h4 id="conv1x1" class="doc_header"><code>conv1x1</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L34" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv1x1</code>(<strong><code>in_planes</code></strong>, <strong><code>out_planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>)</p>
 </blockquote>
-<p>Return a 1x1 convolution taking in <code>in_planes</code> filters and outputting
-<code>out_planes</code> filters with padding and stride <code>stride</code>.</p>
+
+<pre><code>Return a 1x1 convolution taking in `in_planes` filters and outputting
+`out_planes` filters with padding and stride `stride`.</code></pre>
 
 </div>
 
@@ -87,12 +89,13 @@ summary: "Functions to set up a ImageNet pre-trained ResNet backbone to fine-tun
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="BasicBlock" class="doc_header"><code>class</code> <code>BasicBlock</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L37" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BasicBlock</code>(<strong><code>inplanes</code></strong>, <strong><code>planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>, <strong><code>downsample</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
+<h2 id="BasicBlock" class="doc_header"><code>class</code> <code>BasicBlock</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L41" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BasicBlock</code>(<strong><code>inplanes</code></strong>, <strong><code>planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>, <strong><code>downsample</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
 </blockquote>
-<p>The basic building block for ResNets, encompassing the residual connection. Takes in
-<code>inplanes</code> number of input filters, outputs <code>planes</code> number of output filters, with
-stride <code>stride</code> on the first 3x3 conv, and an optional downsampling (<code>nn.Module</code>)
-on the residual output via the <code>downsample</code> parameter.</p>
+
+<pre><code>The basic building block for ResNets, encompassing the residual connection. Takes in
+`inplanes` number of input filters, outputs `planes` number of output filters, with
+stride `stride` on the first 3x3 conv, and an optional downsampling (`nn.Module`)
+on the residual output via the `downsample` parameter.</code></pre>
 
 </div>
 
@@ -114,12 +117,13 @@ on the residual output via the <code>downsample</code> parameter.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Bottleneck" class="doc_header"><code>class</code> <code>Bottleneck</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L73" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Bottleneck</code>(<strong><code>inplanes</code></strong>, <strong><code>planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>, <strong><code>downsample</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
+<h2 id="Bottleneck" class="doc_header"><code>class</code> <code>Bottleneck</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L78" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Bottleneck</code>(<strong><code>inplanes</code></strong>, <strong><code>planes</code></strong>, <strong><code>stride</code></strong>=<em><code>1</code></em>, <strong><code>downsample</code></strong>=<em><code>None</code></em>) :: <code>Module</code></p>
 </blockquote>
-<p>The bottleneck building block for ResNets, encompassing the residual connection. Takes in
-<code>inplanes</code> number of input filters, outputs <code>planes</code> number of output filters, with
-stride <code>stride</code> on the first 3x3 conv, and an optional downsampling (<code>nn.Module</code>)
-on the residual output via the <code>downsample</code> parameter.</p>
+
+<pre><code>The bottleneck building block for ResNets, encompassing the residual connection. Takes in
+`inplanes` number of input filters, outputs `planes` number of output filters, with
+stride `stride` on the first 3x3 conv, and an optional downsampling (`nn.Module`)
+on the residual output via the `downsample` parameter.</code></pre>
 
 </div>
 
@@ -141,10 +145,11 @@ on the residual output via the <code>downsample</code> parameter.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ResNet" class="doc_header"><code>class</code> <code>ResNet</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L115" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNet</code>(<strong><code>block</code></strong>, <strong><code>layers</code></strong>, <strong><code>num_classes</code></strong>=<em><code>1000</code></em>, <strong><code>log_dir</code></strong>=<em><code>'/share/nikola/export/dt372/breakhis_gradcam/logs'</code></em>, <strong><code>save_dir</code></strong>=<em><code>'/share/nikola/export/dt372/breakhis_gradcam/models'</code></em>, <strong><code>create_log_and_save_dirs</code></strong>=<em><code>True</code></em>) :: <code>Module</code></p>
+<h2 id="ResNet" class="doc_header"><code>class</code> <code>ResNet</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L121" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNet</code>(<strong><code>block</code></strong>, <strong><code>layers</code></strong>, <strong><code>num_classes</code></strong>=<em><code>1000</code></em>, <strong><code>log_dir</code></strong>=<em><code>'/share/nikola/export/dt372/breakhis_gradcam/logs'</code></em>, <strong><code>save_dir</code></strong>=<em><code>'/share/nikola/export/dt372/breakhis_gradcam/models'</code></em>, <strong><code>create_log_and_save_dirs</code></strong>=<em><code>True</code></em>) :: <code>Module</code></p>
 </blockquote>
-<p>Constructs a ResNet using a block specification and number of layers. Also specifies where to
-output training logs and model/system state.</p>
+
+<pre><code>Constructs a ResNet using a block specification and number of layers. Also specifies where to
+output training logs and model/system state.</code></pre>
 
 </div>
 
@@ -178,9 +183,10 @@ output training logs and model/system state.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet18" class="doc_header"><code>resnet18</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L200" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet18</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="resnet18" class="doc_header"><code>resnet18</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L207" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet18</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
-<p>Constructs a ResNet-18 model.</p>
+
+<pre><code>Constructs a ResNet-18 model.</code></pre>
 
 </div>
 
@@ -199,9 +205,10 @@ output training logs and model/system state.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet34" class="doc_header"><code>resnet34</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L208" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet34</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="resnet34" class="doc_header"><code>resnet34</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L215" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet34</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
-<p>Constructs a ResNet-34 model.</p>
+
+<pre><code>Constructs a ResNet-34 model.</code></pre>
 
 </div>
 
@@ -220,9 +227,10 @@ output training logs and model/system state.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet50" class="doc_header"><code>resnet50</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L216" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet50</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="resnet50" class="doc_header"><code>resnet50</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L223" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet50</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
-<p>Constructs a ResNet-50 model.</p>
+
+<pre><code>Constructs a ResNet-50 model.</code></pre>
 
 </div>
 
@@ -241,9 +249,10 @@ output training logs and model/system state.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet101" class="doc_header"><code>resnet101</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L224" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet101</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="resnet101" class="doc_header"><code>resnet101</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L231" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet101</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
-<p>Constructs a ResNet-101 model.</p>
+
+<pre><code>Constructs a ResNet-101 model.</code></pre>
 
 </div>
 
@@ -262,9 +271,10 @@ output training logs and model/system state.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet152" class="doc_header"><code>resnet152</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L232" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet152</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+<h4 id="resnet152" class="doc_header"><code>resnet152</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/resnet.py#L239" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet152</code>(<strong><code>pretrained</code></strong>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
-<p>Constructs a ResNet-152 model.</p>
+
+<pre><code>Constructs a ResNet-152 model.</code></pre>
 
 </div>
 
@@ -292,7 +302,8 @@ output training logs and model/system state.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">resnet50</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">4</span><span class="p">);</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">resnet50</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">4</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -305,7 +316,8 @@ output training logs and model/system state.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">model</span>
 </pre></div>
 
     </div>

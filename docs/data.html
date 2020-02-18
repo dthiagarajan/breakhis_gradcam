@@ -44,12 +44,14 @@ summary: "The BreaKHis dataset is organized by benign and malignant tumors, and 
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="BreaKHisDataset" class="doc_header"><code>class</code> <code>BreaKHisDataset</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L17" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BreaKHisDataset</code>(<strong><code>dataset</code></strong>, <strong><code>transform</code></strong>=<em><code>None</code></em>) :: <code>Dataset</code></p>
+<h2 id="BreaKHisDataset" class="doc_header"><code>class</code> <code>BreaKHisDataset</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L19" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>BreaKHisDataset</code>(<strong><code>dataset</code></strong>, <strong><code>transform</code></strong>=<em><code>None</code></em>) :: <code>Dataset</code></p>
 </blockquote>
-<p>PyTorch dataset definition of the BreaKHis dataset.</p>
-<p>Construction of the dataset object should be done using this
-class's method <code>initialize</code>. Simply providing the data directory
-where the data was downloaded is sufficient.</p>
+
+<pre><code>PyTorch dataset definition of the BreaKHis dataset.
+
+Construction of the dataset object should be done using this
+class's method `initialize`. Simply providing the data directory
+where the data was downloaded is sufficient.</code></pre>
 
 </div>
 
@@ -71,9 +73,10 @@ where the data was downloaded is sufficient.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="initialize_datasets" class="doc_header"><code>initialize_datasets</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L232" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize_datasets</code>(<strong><code>data_dir</code></strong>, <strong><code>label</code></strong>=<em><code>'tumor_class'</code></em>, <strong><code>split</code></strong>=<em><code>{'train': 0.8, 'val': 0.2}</code></em>, <strong><code>criterion</code></strong>=<em><code>['tumor_class']</code></em>, <strong><code>split_transforms</code></strong>=<em><code>{'train': None, 'val': None}</code></em>)</p>
+<h4 id="initialize_datasets" class="doc_header"><code>initialize_datasets</code><a href="https://github.com/dthiagarajan/breakhis_gradcam/tree/master/breakhis_gradcam/data.py#L235" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>initialize_datasets</code>(<strong><code>data_dir</code></strong>, <strong><code>label</code></strong>=<em><code>'tumor_class'</code></em>, <strong><code>split</code></strong>=<em><code>{'train': 0.8, 'val': 0.2}</code></em>, <strong><code>criterion</code></strong>=<em><code>['tumor_class']</code></em>, <strong><code>split_transforms</code></strong>=<em><code>{'train': None, 'val': None}</code></em>)</p>
 </blockquote>
-<p>Returns a <a href="/breakhis_gradcam/data#BreaKHisDataset"><code>BreaKHisDataset</code></a> object for the data contained in <code>data_dir</code>.</p>
+
+<pre><code>Returns a `BreaKHisDataset` object for the data contained in `data_dir`.</code></pre>
 
 </div>
 
@@ -107,7 +110,8 @@ where the data was downloaded is sufficient.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">train_transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
     <span class="n">transforms</span><span class="o">.</span><span class="n">RandomRotation</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span>
     <span class="n">transforms</span><span class="o">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(</span><span class="mf">0.8</span><span class="p">),</span>
     <span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
@@ -135,7 +139,8 @@ where the data was downloaded is sufficient.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ds_mapping</span> <span class="o">=</span> <span class="n">initialize_datasets</span><span class="p">(</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">ds_mapping</span> <span class="o">=</span> <span class="n">initialize_datasets</span><span class="p">(</span>
     <span class="s1">&#39;/share/nikola/export/dt372/BreaKHis_v1/&#39;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;tumor_type&#39;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tumor_type&#39;</span><span class="p">,</span> <span class="s1">&#39;magnification&#39;</span><span class="p">],</span>
     <span class="n">split_transforms</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="n">train_transform</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">:</span> <span class="n">val_transform</span><span class="p">}</span>
@@ -152,7 +157,8 @@ where the data was downloaded is sufficient.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tr_ds</span><span class="p">,</span> <span class="n">val_ds</span> <span class="o">=</span> <span class="n">ds_mapping</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span> <span class="n">ds_mapping</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">tr_ds</span><span class="p">,</span> <span class="n">val_ds</span> <span class="o">=</span> <span class="n">ds_mapping</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span> <span class="n">ds_mapping</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -165,7 +171,8 @@ where the data was downloaded is sufficient.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tr_ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">tr_ds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -224,7 +231,8 @@ where the data was downloaded is sufficient.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tr_dl</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">tr_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">tr_dl</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">tr_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">val_dl</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">val_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
 </pre></div>
 
@@ -238,7 +246,8 @@ where the data was downloaded is sufficient.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">tr_dl</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#example</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">tr_dl</span><span class="p">))</span>
 <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 
