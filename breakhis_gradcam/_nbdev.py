@@ -36,4 +36,5 @@ doc_url = "https://dthiagarajan.github.io/breakhis_gradcam/"
 
 git_url = "https://github.com/dthiagarajan/breakhis_gradcam/tree/master/"
 
+
 def custom_doc_links(name): return None

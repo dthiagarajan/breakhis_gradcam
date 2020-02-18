@@ -2,6 +2,7 @@
 
 __all__ = ['BreaKHisDataset', 'initialize_datasets']
 
+
 # Cell
 import numpy as np
 import os
@@ -12,6 +13,7 @@ from torchvision import transforms
 
 np.random.seed(31)
 torch.manual_seed(31);
+
 
 # Cell
 class BreaKHisDataset(torch.utils.data.Dataset):
@@ -226,6 +228,7 @@ class BreaKHisDataset(torch.utils.data.Dataset):
         return cls._split(
             all_data, split=split, criterion=criterion, split_transforms=split_transforms
         )
+
 
 
 # Cell

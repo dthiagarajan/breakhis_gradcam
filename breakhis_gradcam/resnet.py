@@ -3,6 +3,7 @@
 __all__ = ['model_urls', 'conv3x3', 'conv1x1', 'BasicBlock', 'Bottleneck', 'ResNet', 'resnet18', 'resnet34', 'resnet50',
            'resnet101', 'resnet152']
 
+
 # Cell
 import os
 import shutil
@@ -18,6 +19,7 @@ model_urls = {
     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
 }
 
+
 # Cell
 def conv3x3(in_planes, out_planes, stride=1):
     """Return a 3x3 convolution taking in `in_planes` filters and outputting
@@ -27,11 +29,13 @@ def conv3x3(in_planes, out_planes, stride=1):
         padding=1, bias=False
     )
 
+
 # Cell
 def conv1x1(in_planes, out_planes, stride=1):
     """Return a 1x1 convolution taking in `in_planes` filters and outputting
        `out_planes` filters with padding and stride `stride`."""
     return nn.Conv2d(in_planes, out_planes, kernel_size=1, stride=stride, bias=False)
+
 
 # Cell
 class BasicBlock(nn.Module):
@@ -68,6 +72,7 @@ class BasicBlock(nn.Module):
         out = self.relu(out)
 
         return out
+
 
 # Cell
 class Bottleneck(nn.Module):
@@ -110,6 +115,7 @@ class Bottleneck(nn.Module):
         out = self.relu(out)
 
         return out
+
 
 # Cell
 class ResNet(nn.Module):
@@ -195,6 +201,7 @@ class ResNet(nn.Module):
         x = self.out_fc(x)
 
         return x
+
 
 # Cell
 def resnet18(pretrained=False, **kwargs):

@@ -2,6 +2,7 @@
 
 __all__ = ['show_image', 'get_preprocessed_image', 'show_heatmap_and_original']
 
+
 # Cell
 import cv2
 import numpy as np
@@ -21,6 +22,7 @@ from .utils import (
     validate
 )
 
+
 # Cell
 def show_image(datapoint, ax=None):
     """Shows the image corresponding to `datapoint` (taken from a `BreaKHisDataset` object).
@@ -38,6 +40,7 @@ def show_image(datapoint, ax=None):
     if ax is None:
         plt.show()
 
+
 # Cell
 def get_preprocessed_image(datapoint, inference_transform):
     """Returns the pre-processed image and corresponding label ID using the `inference_transform`."""
@@ -46,6 +49,7 @@ def get_preprocessed_image(datapoint, inference_transform):
     if torch.cuda.is_available():
         return inference_transform(image).unsqueeze(0).cuda(), label
     return inference_transform(image).unsqueeze(0), label
+
 
 # Cell
 def show_heatmap_and_original(

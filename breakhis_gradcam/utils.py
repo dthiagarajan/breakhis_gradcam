@@ -3,6 +3,7 @@
 __all__ = ['log', 'mixup_data', 'setup_logging_streams', 'train', 'validate', 'get_param_lr_maps',
            'setup_optimizer_and_scheduler', 'checkpoint_state']
 
+
 # Cell
 import logging
 import numpy as np
@@ -13,6 +14,7 @@ import torch
 
 log = logging.getLogger('Metrics')
 log.setLevel(logging.DEBUG)
+
 
 # Cell
 def mixup_data(x, y, criterion, alpha=1.0):
@@ -41,6 +43,7 @@ def mixup_data(x, y, criterion, alpha=1.0):
         return (pred == mixed_y).sum().item()
 
     return mixed_x, y_a, y_b, lam, mixup_criterion, mixup_acc
+
 
 # Cell
 def setup_logging_streams(model, log_to_file=True, log_to_stdout=False):
@@ -73,6 +76,7 @@ def setup_logging_streams(model, log_to_file=True, log_to_stdout=False):
         print("Cleared all logging handlers")
 
     return clear_handlers
+
 
 # Cell
 def train(
@@ -125,6 +129,7 @@ def train(
     )
     return final_loss, final_acc
 
+
 # Cell
 def validate(
     model, epoch, dataloader, criterion, tta=False, tta_mixing=0.6, logging_frequency=50
@@ -175,6 +180,7 @@ def validate(
     )
     return final_loss, final_acc
 
+
 # Cell
 def get_param_lr_maps(model, base_lr, finetune_body_factor):
     """ Output parameter LR mappings for setting up an optimizer for `model`."""
@@ -207,6 +213,7 @@ def get_param_lr_maps(model, base_lr, finetune_body_factor):
         ]
         param_lr_maps.append({'params': model.out_fc.parameters(), 'lr': base_lr})
         return param_lr_maps
+
 
 # Cell
 def setup_optimizer_and_scheduler(param_lr_maps, base_lr, epochs, steps_per_epoch):
