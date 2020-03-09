@@ -21,6 +21,9 @@ entries:
     - output: web,pdf
       title: Visualization
       url: /vis
+    - output: web,pdf
+      title: Integration with PyTorch Lightning
+      url: /pytorch_lightning_example
     output: web
     title: breakhis_gradcam
   output: web

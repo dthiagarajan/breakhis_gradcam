@@ -4,6 +4,7 @@
     "ResNet Backbone": "/resnet",
     "BreaKHis Data Processing": "/data",
     "Utilities": "/utils",
-    "Visualization": "/vis"
+    "Visualization": "/vis",
+    "Integration with PyTorch Lightning": "/pytorch_lightning_example"
   }
 }
