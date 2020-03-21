@@ -6,6 +6,7 @@ keywords: fastai
 sidebar: home_sidebar
 
 summary: "Fine-tuning classification networks and using GradCAM to obtain object detection results on histopathological slides of breast cancer."
+description: "Fine-tuning classification networks and using GradCAM to obtain object detection results on histopathological slides of breast cancer."
 ---
 <!--
 
@@ -18,13 +19,14 @@ summary: "Fine-tuning classification networks and using GradCAM to obtain object
 -->
 
 <div class="container" id="notebook-container">
-    
+    {% raw %}
+        
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Install">Install<a class="anchor-link" href="#Install">&#182;</a></h2>
+<h2 id="Install">Install<a class="anchor-link" href="#Install"> </a></h2>
 </div>
 </div>
 </div>
@@ -37,9 +39,13 @@ summary: "Fine-tuning classification networks and using GradCAM to obtain object
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Later">Later<a class="anchor-link" href="#Later">&#182;</a></h2><ul>
+<h2 id="Later">Later<a class="anchor-link" href="#Later"> </a></h2><ul>
 <li>Examples of how to use this package</li>
-<li>Visualizations of results (GradCAM, corresponding object detection) after training using models defined by this package</li>
+<li>Using some form of unsupervised bounding box detection (e.g. attention cropping) to pull bounding box predictions<ul>
+<li>This is probably more reasonable to do with a dataset that has these labels, as more training can be done to get better bounding box predictions</li>
+</ul>
+</li>
+<li>Using a variant of the SimCLR framework to fine-tune the trained models based on similarity between detected regions of slides within the same subclass</li>
 </ul>
 
 </div>
@@ -47,11 +53,12 @@ summary: "Fine-tuning classification networks and using GradCAM to obtain object
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Contact">Contact<a class="anchor-link" href="#Contact">&#182;</a></h2><p>dt372@cornell.edu</p>
+<h2 id="Contact">Contact<a class="anchor-link" href="#Contact"> </a></h2><p>dt372@cornell.edu</p>
 
 </div>
 </div>
 </div>
+    {% endraw %}
 </div>
  
 
