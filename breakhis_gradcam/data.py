@@ -45,7 +45,7 @@ class BreaKHisDataset(torch.utils.data.Dataset):
     def __getitem__(self, index):
         (fp, tumor, subtumor, magnification, slide_id, sequence_id), label = self.dataset[index]
         image = Image.open(fp)
-        data = self.transform(image) if image else image
+        data = self.transform(image) if self.transform else image
         return data, torch.Tensor([label]).long().squeeze()
 
     def __len__(self):
